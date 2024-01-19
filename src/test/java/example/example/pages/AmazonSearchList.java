@@ -14,10 +14,14 @@ import org.openqa.selenium.support.FindBy;
 public class AmazonSearchList extends BasePage {
 	
  	/** First Product. */
-	//@FindBy(css = ".a-link-normal.s-underline-text.s-underline-link-text")
-	@FindBy(css="[data-index='3'] a.a-text-normal")
+ 	@FindBy(css="[data-index='3'] a.a-text-normal")
 	// a-price-whole
 	private WebElement firstProd;
+ 	
+ 	/** Second Product. */
+ 	@FindBy(css="[data-index='4'] a.a-text-normal")
+	// a-price-whole
+	private WebElement secondProd;
 	/**
 	 * Instantiates a new google page.
 	 *
@@ -32,12 +36,12 @@ public class AmazonSearchList extends BasePage {
 	 *
 	 * @param key the key
 	 */
-	public void gotoProductPage() {
-//		firstProd.wait(E);
-//		WebElement element = driver.findElement(By.xpath("//div[@class='footer']"));
-//		System.out.println("prod url  === " + firstProd.getAttribute("href"));
-
-		driver.navigate().to(firstProd.getAttribute("href"));
+	public void gotoProductPage(String pos) { 
+		if(pos == "1") {
+			driver.navigate().to(firstProd.getAttribute("href"));
+		} else {
+			driver.navigate().to(secondProd.getAttribute("href"));
+		}
 	}
 	
  

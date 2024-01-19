@@ -17,7 +17,7 @@ import org.openqa.selenium.support.FindBy;
 public class AmazonProduct extends BasePage {
 	
 	/** The get cost. */
-	@FindBy(className = "a-price-whole")
+	@FindBy(css = "#corePriceDisplay_desktop_feature_div .a-price-whole")
 	private WebElement cost;
 	
 	/** add to cart button on product page. */
@@ -52,10 +52,7 @@ public class AmazonProduct extends BasePage {
 	 */	
 	public void AddToCart() throws Exception {
 		Actions actions = new Actions(driver);
-		System.out.println("add to cart click  === " + addToCart.getAttribute("name"));
-//		addToCart.click();
-
-		actions.moveToElement(addToCart).click().build().perform();
+ 		actions.moveToElement(addToCart).click().build().perform();
 		WebElement aC = driver.findElement(By.xpath("//*[@id=\"attach-close_sideSheet-link\"]"));
 		aC.click();
 		Thread.sleep(2000);
@@ -76,8 +73,7 @@ public class AmazonProduct extends BasePage {
 		String fulltext = aC.getText();
 		String output = fulltext.replace(cT.getText(), "");
 		return output;
-		//sc-subtotal-amount-buybox
-	}
+ 	}
 	
 	/**
 	 * Go to Cart and evaluate both costs
